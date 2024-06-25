@@ -88,7 +88,10 @@ export const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
     const formattedData = arrayOfData.map((item) => ({
       ...item,
       amount: convertAmountToMiliunits(item.amount),
-      date: format(parse(item.date, dateFormat, new Date()), outputFormat),
+      date: format(
+        parse(item.date.slice(1), dateFormat, new Date()),
+        outputFormat
+      ),
     }));
 
     onSubmit(formattedData);
